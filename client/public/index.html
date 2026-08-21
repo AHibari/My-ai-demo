@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Demo — Chat</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <div class="brand-mark">AI</div>
+        <div>
+          <h1>AI Demo — Chat</h1>
+          <p class="subtitle">聊天记录会自动保存到本地</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          <span>在线</span>
+        </div>
+        <button id="theme-toggle" class="secondary-button icon-button" type="button" aria-label="切换主题">🌙</button>
+        <label class="model-picker" for="model-select">
+          <span>模型</span>
+          <select id="model-select"></select>
+        </label>
+        <button id="export-button" class="secondary-button" type="button">导出聊天</button>
+        <button id="clear-button" class="secondary-button" type="button">清空会话</button>
+        <button id="user-avatar-button" class="user-avatar-button" type="button" aria-label="修改用户头像">
+          <span class="user-avatar-preview">U</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-header-main">
+            <h2>会话列表</h2>
+          </div>
+        </div>
+        <div class="sidebar-toolbar">
+          <div class="sidebar-search">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input id="session-search" type="search" placeholder="搜索" aria-label="搜索会话" />
+          </div>
+          <button id="sidebar-toggle" class="icon-button ghost-icon-button sidebar-toggle-button" type="button" aria-label="收起会话列表"></button>
+        </div>
+        <button id="new-session-button" class="new-session-button" type="button">
+          <span class="plus-icon" aria-hidden="true">＋</span>
+          <span>开启新对话</span>
+        </button>
+        <div id="session-list" class="session-list" aria-label="会话列表"></div>
+      </aside>
+
+      <main class="chat-panel">
+        <div id="messages" class="messages" aria-live="polite"></div>
+        <div id="suggestion-list" class="suggestion-list" aria-live="polite"></div>
+
+        <form id="chat-form" class="composer">
+         <div class="composer-tools">
+           <div class="composer-utility">
+             <button id="continue-button" class="ghost-button" type="button">继续上文</button>
+             <button id="mic-button" class="ghost-button" type="button">🎤 语音输入</button>
+             <label class="tts-toggle"><input id="tts-toggle" type="checkbox" /> 语音播放</label>
+           </div>
+           <div class="composer-meta">
+             <span id="file-name" class="file-name">未上传文件</span>
+             <span id="intent-label" class="intent-label" aria-live="polite"></span>
+           </div>
+         </div>
+         <div class="composer-row">
+           <div class="composer-input-shell">
+             <textarea id="message-input" rows="3" placeholder="输入你的问题..." required></textarea>
+             <div class="composer-action-bar">
+               <button id="upload-trigger" class="upload-control" type="button" title="上传文件" aria-label="上传文件">
+                 <span class="upload-icon">📎</span>
+               </button>
+               <input id="file-input" type="file" accept=".txt,.md,.json,.csv,.log,.js,.ts,.py,.java,.cs,.html,.css,.xml" hidden />
+               <button id="send-button" type="submit" aria-label="发送消息">
+                 <span class="send-icon">↑</span>
+               </button>
+             </div>
+           </div>
+         </div>
+        </form>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>
