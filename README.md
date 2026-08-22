@@ -26,6 +26,10 @@
 - `README.md`：项目说明
 - `.gitignore`：Git 忽略规则
 
+## 项目预览
+
+![AI Demo 首页预览](docs/preview.png)
+
 ## 技术栈
 
 - 前端：静态 HTML/CSS/JavaScript
